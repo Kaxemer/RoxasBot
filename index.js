@@ -7,6 +7,23 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
+const { Client2 } = require('pg');
+
+const client2 = new Client2({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client2.connect();
+
+client2.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client2.end();
+});
+
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -16,17 +33,6 @@ for (const file of commandFiles) {
 
 const cooldowns = new Discord.Collection();
 
-// const sequelize = new Sequelize('database', 'user', 'password' {
-//   host: 'localhost',
-//   dialect: 'sqlite',
-//   logging: false,
-//   operatorsAliases: false,
-//   storage: 'database.sqlite'
-// });
-//
-// const Tags = sequelize.define('tags' , {
-//   name
-// })
 
 client.once('ready', () => {
   console.log('Ready!');
