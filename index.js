@@ -7,22 +7,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-// const { Client2 } = require('pg');
-//
-// const client2 = new Client2({
+// const { Pool } = require('pg');
+// const pool = new Pool({
 //   connectionString: process.env.DATABASE_URL,
-//   ssl: true,
+//   ssl: true
 // });
 //
-// client2.connect();
-// 
-// client2.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-//   if (err) throw err;
-//   for (let row of res.rows) {
-//     console.log(JSON.stringify(row));
-//   }
-//   client2.end();
-// });
+// pool.connect();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
