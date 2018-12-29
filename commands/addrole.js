@@ -13,7 +13,7 @@ module.exports = {
 
     const comp = args.shift();
 
-    if (comp !== taggedUser) return message.reply('Incorrect usage');
+    return message.reply(comp);
 
     args.forEach(function(entry) {
       try {
