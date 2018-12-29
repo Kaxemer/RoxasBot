@@ -15,13 +15,12 @@ module.exports = {
 
     if (comp != taggedUser) return message.reply('Incorrect usage!');
 
+    var role;
+
     args.forEach(function(entry) {
-      try {
-        var role = message.guild.roles.find(role => role.name === entry);
-      } catch (e) {
-        message.reply("You've entered an invalid role");
-      }
-      taggedUser.addRole(entry);
+        let role = message.guild.roles.find(r => r.name === entry)
+        taggedUser.addRole(role).catch(console.error);
     });
+    message.reply('Roles successfully added.')
   },
 };
