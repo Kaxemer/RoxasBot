@@ -13,7 +13,7 @@ module.exports = {
 
     const comp = args.shift();
 
-    return message.reply(comp === taggedUser);
+    return message.reply(comp == taggedUser);
 
     args.forEach(function(entry) {
       try {
