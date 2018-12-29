@@ -30,6 +30,9 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
+
+  if (message.content === 'F' || message.content === 'f') return message.channel.send('F');
+
   if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
 
   const args = message.content.slice(process.env.PREFIX.length).split(/ +/);
