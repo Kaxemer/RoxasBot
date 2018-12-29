@@ -31,7 +31,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
 
-  if (message.content === 'F' || message.content === 'f') return message.channel.send('F');
+  if (message.content === 'F' || message.content === 'f') return message.reply('F');
 
   if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
 
