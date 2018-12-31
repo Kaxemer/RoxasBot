@@ -7,13 +7,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-// const { Pool } = require('pg');
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: true
-// });
-//
-// pool.connect();
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
+
+module.exports.pool = pool;
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
