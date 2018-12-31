@@ -1,4 +1,4 @@
-const db = require(../index.js);
+const db = require('../index.js');
 const pool = db.pool;
 
 module.exports = {
@@ -9,12 +9,11 @@ module.exports = {
     const query = ('SELECT count FROM kyle WHERE key = 0');
     pool.query(upd, function(err, result){
       if (err) throw err;
-      message.channel.send("Value updated!");
+      pool.query(query, function(err, result) {
+        if (err) throw err;
+        console.log(result.rows[0].count);
+        message.channel.send(`The amount of times Kyle should be banned: ${result.rows[0].count}`);
+      });
     });
-    pool.query(query, function(err, result) {
-      if (err) throw err;
-      var val = results[0].count;
-    });
-    message.channel.send(`Times Kyle Should Be Banned: ${val}`).catch(console.error);
   },
 };
