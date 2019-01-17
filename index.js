@@ -29,6 +29,10 @@ client.once('ready', () => {
   console.log('Ready!');
 });
 
+client.on('guildMemberAdd', member => {
+  member.addRole('535281988320362520');
+});
+
 client.on('message', message => {
 
   // if (message.content === 'F' || message.content ==='f' && !message.author.bot) return message.channel.send('F');

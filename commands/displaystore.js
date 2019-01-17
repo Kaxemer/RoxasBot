@@ -6,11 +6,11 @@ module.exports = {
   description: 'Displays items in the store.',
   aliases: ['viewstore'],
   execute(message, args) {
-    var mess = `Item\tCost\n`;
+    var mess = ``;
     pool.query('SELECT *  FROM store', function(err, result) {
       if (err) throw err;
       for (var i = 0; i < result.rows.length; i++) {
-        mess = (`${mess}${result.rows[i].item}\t${result.rows[i].cost}\n`);
+        mess = (`${mess}${result.rows[i].id}\t\t${result.rows[i].item}${result.rows[i].cost}💰\n`);
       }
       console.log(mess);
       message.channel.send(mess);
