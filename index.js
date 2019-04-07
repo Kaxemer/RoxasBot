@@ -33,14 +33,6 @@ client.on('guildMemberAdd', member => {
   member.addRole('535281988320362520');
 });
 
-client.on('presenceUpdate', (before, after) => {
-  if (after.presence.game != null && after.presence.game.streaming && before.presence.game.streaming != true){
-    if(after.id == '231271524282138625') {
-      client.channels.get('564230071012032532').send('Napem has begun streaming!\nhttps://www.twitch.tv/napem');
-    };
-  };
-});
-
 client.on('message', message => {
 
   // if (message.content === 'F' || message.content ==='f' && !message.author.bot) return message.channel.send('F');
