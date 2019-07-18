@@ -5,6 +5,7 @@ module.exports = {
   name: 'displaystore',
   description: 'Displays items in the store.',
   aliases: ['viewstore'],
+  cooldown: 60,
   execute(message, args) {
     var mess = ``;
     pool.query('SELECT *  FROM store', function(err, result) {
