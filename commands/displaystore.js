@@ -10,7 +10,7 @@ module.exports = {
     pool.query('SELECT *  FROM store', function(err, result) {
       if (err) throw err;
       for (var i = 0; i < result.rows.length; i++) {
-        mess = (`${mess}${result.rows[i].item}${result.rows[i].cost}💰\n`);
+        mess = (`${mess}${results.rows[i].id}${result.rows[i].item}${result.rows[i].cost}💰\n`);
       }
       console.log(mess);
       message.channel.send(mess);
