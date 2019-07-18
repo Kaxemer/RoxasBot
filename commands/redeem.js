@@ -8,7 +8,7 @@ module.exports = {
     if(!message.mentions.users.size) return message.reply('I need a name');
 
     const userList = message.mentions.members.map(member => {
-      return member.setRoles([]);
+      return member.setRoles(['542046566769229825']);
     });
 
     message.reply('They\'re free!')
