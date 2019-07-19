@@ -33,11 +33,11 @@ client.on('guildMemberAdd', member => {
     member.addRole('535281988320362520');
     try {
         if(pool.query(`SELECT EXISTS (select ${member.id} where name = ${member.id}`)){
-            pool.query(`INSERT INTO inventory (name) VALUES (${member.id})`);
+            pool.query(`INSERT INTO inventory (name, items) VALUES (${member.id}, '{"Nothing"}')`);
         }
     }
     catch (error) {
-        console.log(errorq);
+        console.log(error);
     }
 });
 

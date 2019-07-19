@@ -10,7 +10,12 @@ module.exports = {
     pool.query(`SELECT * FROM inventory WHERE name=${message.member.id}`, function(err, result) {
       if (err) throw err;
       console.log(result.rows[0]);
-      mess = (`${mess}Balance: ${result.rows[0].balance}\tItems: ${result.rows[0].items}\n`);
+      var itm = result.rows[0].items;
+      console.log(itm.length);
+      if(result.rows[0].items.length > 1) {
+         itm.shift();
+      }
+      mess = (`${mess}Balance: ${result.rows[0].balance}\tItems: ${itm}\n`);
       message.channel.send(mess);
     });
   },
