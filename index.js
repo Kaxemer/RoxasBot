@@ -39,7 +39,7 @@ var j = schedule.scheduleJob('0 0 8 * * *', function() {
   });
 });
 
-var k = schedule.scheduleJob('0 26 10 * * *', function(){
+var k = schedule.scheduleJob('0 0 0 * * *', function(){
   client.channels.get('500049185475657728').send("Good night!");
   client.channels.get('500049185475657728').overwritePermissions('455535667963887627', {
     SEND_MESSAGES: false,
