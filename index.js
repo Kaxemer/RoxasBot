@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const fs = require('fs');
 const Discord = require('discord.js');
-
+var schedule = require('node-schedule');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -27,6 +27,26 @@ const cooldowns = new Discord.Collection();
 
 client.once('ready', () => {
   console.log('Ready!');
+});
+
+var j = schedule.scheduleJob('0 0 8 * * *', function() {
+  client.channels.get('500049185475657728').send("Good morning!");
+  client.channels.get('500049185475657728').overwritePermissions('455535667963887627', {
+    SEND_MESSAGES: true,
+  });
+  client.channels.get('602139212686295050').overwritePermissions('455535667963887627', {
+    SEND_MESSAGES: false,
+  });
+});
+
+var k = schedule.scheduleJob('0 26 10 * * *', function(){
+  client.channels.get('500049185475657728').send("Good night!");
+  client.channels.get('500049185475657728').overwritePermissions('455535667963887627', {
+    SEND_MESSAGES: false,
+  });
+  client.channels.get('602139212686295050').overwritePermissions('455535667963887627', {
+    SEND_MESSAGES:true,
+  });
 });
 
 client.on('guildMemberAdd', member => {
